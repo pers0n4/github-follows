@@ -30,6 +30,16 @@
       }
     ],
 
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never",
+        "tsx": "never",
+        "js": "never",
+        "jsx": "never"
+      }
+    ],
     "import/order": [
       "error",
       {
