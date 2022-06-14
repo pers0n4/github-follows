@@ -9,7 +9,7 @@
     "project": "./tsconfig.json",
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "import", "react"],
+  "plugins": ["@typescript-eslint", "import", "react", "react-hooks"],
   "extends": [
     "airbnb",
     "airbnb-typescript",
@@ -27,6 +27,13 @@
       "error",
       {
         "extensions": [".tsx", ".jsx"]
+      }
+    ],
+
+    "react-hooks/exhaustive-deps": [
+      "error",
+      {
+        "additionalHooks": "useRecoilCallback"
       }
     ],
 
