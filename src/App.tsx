@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <ThemeProvider>
+    <ThemeProvider colorMode="auto">
       <BaseStyles>
         <Routes>
           <Route path="/" element={<p>Hello Vite + React!</p>} />
