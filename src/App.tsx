@@ -1,12 +1,15 @@
 import React from "react";
 
-import { ThemeProvider, BaseStyles } from "@primer/react";
+import { BaseStyles, ThemeProvider } from "@primer/react";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <ThemeProvider>
       <BaseStyles>
-        <p>Hello Vite + React!</p>
+        <Routes>
+          <Route path="/" element={<p>Hello Vite + React!</p>} />
+        </Routes>
       </BaseStyles>
     </ThemeProvider>
   );
