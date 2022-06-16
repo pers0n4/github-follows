@@ -8,10 +8,10 @@ import Account from "~/components/Account";
 
 function PageHeader() {
   return (
-    <Header sx={{ px: 6 }}>
+    <Header sx={{ px: 5 }}>
       <Header.Item full>
         <Header.Link as={Link} to="/">
-          <StyledOcticon icon={FeedHeartIcon} size={32} sx={{ mr: 2 }} />
+          <StyledOcticon icon={FeedHeartIcon} size={32} sx={{ mr: 3 }} />
           <span>GitHub Follows</span>
         </Header.Link>
       </Header.Item>
