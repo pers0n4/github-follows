@@ -1,7 +1,7 @@
 import React from "react";
 
 import { BaseStyles, ThemeProvider } from "@primer/react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import AuthLayout from "~/components/Auth/AuthLayout";
 import Layout from "~/components/Layout";
@@ -21,6 +21,7 @@ function App() {
           <Route path="/dashboard" element={<AuthLayout />}>
             <Route index element={<Dashboard />} />
           </Route>
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BaseStyles>
     </ThemeProvider>
