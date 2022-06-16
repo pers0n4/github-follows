@@ -17,7 +17,7 @@ function Authorize() {
       if (code) {
         await signIn({ code, state });
       }
-      navigate("/", { replace: true });
+      navigate("/dashboard", { replace: true });
     })();
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
