@@ -2,6 +2,7 @@ import React from "react";
 
 import { TriangleDownIcon } from "@primer/octicons-react";
 import { ActionList, ActionMenu, Avatar, Box } from "@primer/react";
+import { Link } from "react-router-dom";
 
 import { useAuthActions } from "~/recoil/auth";
 
@@ -28,24 +29,29 @@ function AccountAvatar({ user }: Props) {
           alignItems="center"
           sx={{ cursor: "pointer" }}
         >
-          <Avatar src={user.avatarUrl as string} alt={`@${user.login}`} />
+          <Avatar src={String(user.avatarUrl)} alt={`@${user.login}`} />
           <TriangleDownIcon />
         </Box>
       </ActionMenu.Anchor>
 
       <ActionMenu.Overlay>
         <ActionList>
-          <ActionList.LinkItem href={`https://github.com/${user.login}`}>
-            Your GitHub profile
+          <ActionList.LinkItem as={Link} to="/dashboard">
+            Dashboard
           </ActionList.LinkItem>
           <ActionList.Divider />
-          <ActionList.LinkItem
-            href={`https://github.com/settings/connections/applications/${
-              import.meta.env.VITE_CLIENT_ID
-            }`}
-          >
-            Review permissions
-          </ActionList.LinkItem>
+          <ActionList.Group title="GitHub">
+            <ActionList.LinkItem href={`https://github.com/${user.login}`}>
+              Your GitHub profile
+            </ActionList.LinkItem>
+            <ActionList.LinkItem
+              href={`https://github.com/settings/connections/applications/${
+                import.meta.env.VITE_CLIENT_ID
+              }`}
+            >
+              Review permissions
+            </ActionList.LinkItem>
+          </ActionList.Group>
           <ActionList.Divider />
           <ActionList.Item onClick={handleSignOut} variant="danger">
             Sign Out
