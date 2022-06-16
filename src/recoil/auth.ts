@@ -1,6 +1,11 @@
 import { graphql } from "@octokit/graphql";
 import axios from "axios";
-import { atom, useRecoilState, useSetRecoilState } from "recoil";
+import {
+  atom,
+  useRecoilState,
+  useRecoilValue,
+  useSetRecoilState,
+} from "recoil";
 
 import type {
   OAuthAppAuthentication,
@@ -37,6 +42,14 @@ export const userState = atom<User | null>({
   default: null,
   effects: [localStorageEffect("user")],
 });
+
+export function useToken() {
+  return useRecoilValue(tokenState);
+}
+
+export function useUser() {
+  return useRecoilValue(userState);
+}
 
 export function useAuthActions() {
   const [token, setToken] = useRecoilState(tokenState);
