@@ -13,14 +13,6 @@ import { tokenState } from "./auth";
 
 import type { User } from "@octokit/graphql-schema";
 
-export const followsState = atom({
-  key: "FOLLOWS_ATOM",
-  default: {
-    followers: [] as User[],
-    following: [] as User[],
-  },
-});
-
 export const followsTypes = ["Followers", "Following"] as const;
 
 export type FollowsType = typeof followsTypes[number];
@@ -28,6 +20,14 @@ export type FollowsType = typeof followsTypes[number];
 export const followsTypeState = atom<FollowsType>({
   key: "FOLLOWS_TYPE_ATOM",
   default: followsTypes[0],
+});
+
+export const followsState = atom({
+  key: "FOLLOWS_ATOM",
+  default: {
+    followers: [] as User[],
+    following: [] as User[],
+  },
 });
 
 export const filteredFollowsState = selector({
