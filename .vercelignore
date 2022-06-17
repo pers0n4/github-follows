@@ -1,4 +1,6 @@
-/*
-!api
-!vercel.json
-!*.html
+noed_modules/
+
+.eslintcache
+
+.husky/
+.vscode/
