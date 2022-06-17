@@ -16,8 +16,7 @@ function AccountAvatar({ user }: Props) {
   const { signOut } = useAuthActions();
 
   const handleSignOut = () => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    signOut();
+    signOut(); // eslint-disable-line @typescript-eslint/no-floating-promises
   };
 
   return (
