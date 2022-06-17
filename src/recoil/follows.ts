@@ -55,6 +55,26 @@ export const filteredFollowsState = selector({
         return [...followers, ...following];
     }
   },
+  set: ({ get, set }, newValue) => {
+    const { followers, following } = get(followsState);
+    const followsType = get(followsTypeState);
+    switch (followsType) {
+      case "Followers":
+        set(followsState, {
+          followers: newValue as User[],
+          following,
+        });
+        break;
+      case "Following":
+        set(followsState, {
+          followers,
+          following: newValue as User[],
+        });
+        break;
+      default:
+        return [...followers, ...following];
+    }
+  },
 });
 
 export function useFollowsTypes() {
@@ -62,7 +82,7 @@ export function useFollowsTypes() {
 }
 
 export function useFilteredFollows() {
-  return useRecoilValue(filteredFollowsState);
+  return useRecoilState(filteredFollowsState);
 }
 
 export function useFollowsActions() {
