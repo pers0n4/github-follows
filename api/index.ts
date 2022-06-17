@@ -1,6 +1,5 @@
 import { OAuthApp, createNodeMiddleware } from "@octokit/oauth-app";
-
-import type { Application } from "express";
+import * as express from "express";
 
 const app = new OAuthApp({
   clientType: "oauth-app",
@@ -10,8 +9,8 @@ const app = new OAuthApp({
   defaultScopes: ["user:follow"],
 });
 
-const express: Application = require("express")();
+const server = express();
 
-express.use(createNodeMiddleware(app));
+server.use(createNodeMiddleware(app));
 
-export default express;
+export default server;
