@@ -3,23 +3,23 @@ import React from "react";
 import { ActionList, PageLayout } from "@primer/react";
 
 import Layout from "~/components/Layout";
+import { followsTypes, useFollowsTypes } from "~/recoil/follows";
 
 import PrivateRoute from "./PrivateRoute";
 
 function AuthLayout() {
-  const actionItems = ["Followers", "Following"];
-  const [selectedItem, setSelectedItem] = React.useState(actionItems[0]);
+  const [followsType, setFollowsType] = useFollowsTypes();
 
   return (
     <PrivateRoute>
       <Layout>
         <PageLayout.Pane position="start" width="small" divider="line">
           <ActionList>
-            {actionItems.map((item) => (
+            {followsTypes.map((item) => (
               <ActionList.Item
                 key={item}
-                active={item === selectedItem}
-                onSelect={() => setSelectedItem(item)}
+                active={item === followsType}
+                onSelect={() => setFollowsType(item)}
               >
                 {item}
               </ActionList.Item>
