@@ -7,8 +7,6 @@ import {
   useSetRecoilState,
 } from "recoil";
 
-import { difference } from "~/utils/set";
-
 import { tokenState } from "./auth";
 
 import type { User } from "@octokit/graphql-schema";
@@ -38,19 +36,9 @@ export const filteredFollowsState = selector({
 
     switch (followsType) {
       case "Followers":
-        return followers.filter((follower) =>
-          difference(
-            followers.map((f) => f.id),
-            following.map((f) => f.id),
-          ).includes(follower.id),
-        );
+        return followers.filter((user) => !user.viewerIsFollowing);
       case "Following":
-        return following.filter((followee) =>
-          difference(
-            following.map((f) => f.id),
-            followers.map((f) => f.id),
-          ).includes(followee.id),
-        );
+        return following.filter((user) => !user.isFollowingViewer);
       default:
         return [...followers, ...following];
     }
@@ -130,6 +118,7 @@ export function useFollowsActions() {
                 name
                 url
                 avatarUrl
+                viewerIsFollowing
               }
             }
             following(first: $followingCount) {
@@ -139,6 +128,7 @@ export function useFollowsActions() {
                 name
                 url
                 avatarUrl
+                isFollowingViewer
               }
             }
           }
