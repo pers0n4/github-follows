@@ -27,6 +27,7 @@
   "scripts": {
     "build": "tsc && vite build",
     "dev": "vite",
+    "develop": "vercel dev --local-config ./vercel.dev.json",
     "format": "prettier --write '**/*.{ts,js}'",
     "lint": "eslint '**/*.{ts,js}'",
     "prepare": "husky install",
@@ -72,6 +73,7 @@
     "lint-staged": "^13.0.2",
     "prettier": "^2.7.1",
     "typescript": "^4.7.4",
+    "vercel": "^25.2.2",
     "vite": "^2.9.12"
   }
 }
